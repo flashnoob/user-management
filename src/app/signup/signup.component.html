@@ -1,0 +1,41 @@
+<form class="example-form m-5"  [formGroup]='userForm' >
+
+  <div class="form-group d-flex justify-content-center"> <mat-form-field class="w-50">
+    <mat-label>First Name</mat-label>
+    <input matInput placeholder="Ex. Joe"  formControlName="firstName" >
+    <mat-error *ngIf="firstName.invalid">enter first name</mat-error>
+  </mat-form-field></div>
+  <div class="form-group  d-flex justify-content-center"> <mat-form-field class="w-50">
+    <mat-label>Last Name</mat-label>
+    <input matInput placeholder="Ex. Apte"  formControlName="lastName">    <mat-error *ngIf="lastName.invalid">enter last name</mat-error>
+
+  </mat-form-field></div>
+  <div class="form-group d-flex justify-content-center"> <mat-form-field class="w-50">
+    <mat-label>Username</mat-label>
+    <input matInput placeholder="username"  formControlName="userName">
+    <mat-error *ngIf="userName.invalid">enter username</mat-error>
+  </mat-form-field></div>
+  <div class="form-group  d-flex justify-content-center"> <mat-form-field class="w-50">
+    <mat-label>Email</mat-label>
+    <input  type="email"  formControlName="email" checkEmail matInput placeholder="Ex. sam@gmail.com" (blur)="checkEmail($event)" >
+    <mat-error *ngIf="email.invalid">enter email ID</mat-error>
+    <mat-error *ngIf="email.errors.taken">email id taken</mat-error>
+
+
+  </mat-form-field></div>
+  <div class="form-group  d-flex justify-content-center"> <mat-form-field class="w-50">
+    <mat-label>Phone Number</mat-label>
+    <input  matInput placeholder="9999999999" formControlName="mobileNo" >
+    <mat-error *ngIf="mobileNo.invalid">enter mobile no.</mat-error>
+
+  </mat-form-field></div>
+  <div class="form-group  d-flex justify-content-center"> <mat-form-field class="w-50">
+    <input matInput placeholder="Password"  formControlName="password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    <mat-error *ngIf="password.invalid">enter password</mat-error>
+
+  </mat-form-field></div>
+  <div class="form-group  d-flex justify-content-center">
+  <button mat-button class=" mx-auto btn btn-secondary" [disabled]="!userForm.valid" (click)='saveUser()'>Register</button>
+  </div>
+</form>
